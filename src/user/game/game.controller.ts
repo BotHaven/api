@@ -62,7 +62,7 @@ export class GameController {
         .then(this.userService.populateGames)
         .then((populatedUser) => this.gameService.delete(populatedUser, gameIdentifier))
         .then((val) => val == undefined ? new BadRequestException("game not found") : val)
-        .catch()
+        .catch() 
     }
 
 
