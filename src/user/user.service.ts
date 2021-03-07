@@ -140,6 +140,7 @@ export class UserService {
   }
 
   async addExperience(user: UserDocument | PopulatedUserDocument, experience: number): Promise<UserDocument> {
+    if(!user.experience) user.experience = 0;
     user.experience += experience;
     user.markModified("experience");
     return user.save();
