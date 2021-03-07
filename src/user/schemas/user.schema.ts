@@ -20,6 +20,8 @@ export class User {
   games: GameDocument[];
   @Prop({required: false, type: String, default: ""})
   bio: string;
+  @Prop({required: false, type: Number, default: 0})
+  experience: number;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
