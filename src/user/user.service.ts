@@ -138,4 +138,10 @@ export class UserService {
         });
     });
   }
+
+  async addExperience(user: UserDocument | PopulatedUserDocument, experience: number): Promise<UserDocument> {
+    user.experience += experience;
+    user.markModified("experience");
+    return user.save();
+  }
 }
