@@ -17,7 +17,7 @@ export class ScoreController {
     async inc(@Agent() agent: string,@Param("userIdentifier") userIdentifier: string, @Param("gameIdentifier") gameIdentifier: string, @Param("invitedUsername") invitedUsername: string) {
                 return this.userService.get(agent,userIdentifier)
                 .then(this.userService.populateGames)
-                .then((populatedUser) => this.userService.addExperience(populatedUser, 10))
+                // .then((populatedUser) => this.userService.addExperience(populatedUser, 10))
                 .then((populatedUser) => this.gameService.get(populatedUser, gameIdentifier))
                 .then((game) => this.scoreService.inc(game, invitedUsername.toLocaleLowerCase()))
                 .catch();
