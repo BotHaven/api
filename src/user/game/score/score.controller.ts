@@ -18,7 +18,7 @@ export class ScoreController {
                 return this.userService.get(agent,userIdentifier)
                 .then(this.userService.populateGames)
                 .then((populatedUser) => this.gameService.get(populatedUser, gameIdentifier))
-                .then((game) => this.scoreService.inc(game, invitedUsername))
+                .then((game) => this.scoreService.inc(game, invitedUsername.toLocaleLowerCase()))
                 .catch();
     }
     @Patch("/:invitedUsername/dec")
@@ -26,7 +26,7 @@ export class ScoreController {
                 return this.userService.get(agent, userIdentifier)
                     .then(this.userService.populateGames)
                     .then((populatedUser) => this.gameService.get(populatedUser, gameIdentifier))
-                    .then((game) => this.scoreService.dec(game, invitedUsername))
+                    .then((game) => this.scoreService.dec(game, invitedUsername.toLocaleLowerCase()))
                     .catch();
     }
     @Patch("/:invitedUsername/set/:num")
@@ -34,7 +34,7 @@ export class ScoreController {
         return this.userService.getByUsername(userIdentifier)
             .then(this.userService.populateGames)
             .then((populatedUser) => this.gameService.get(populatedUser, gameIdentifier))
-            .then((game) => this.scoreService.set(game, username, num))
+            .then((game) => this.scoreService.set(game, username.toLocaleLowerCase(), num))
             .catch();
     }
 
@@ -43,7 +43,7 @@ export class ScoreController {
         return this.userService.getByUsername(userIdentifier)
             .then(this.userService.populateGames)
             .then((populatedUser) => this.gameService.get(populatedUser, gameIdentifier))
-            .then((game) => this.scoreService.set(game, username, 0))
+            .then((game) => this.scoreService.set(game, username.toLocaleLowerCase(), 0))
             .catch();
 
     }

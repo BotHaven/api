@@ -108,6 +108,7 @@ export class GameService {
    * @returns {UserDocument} - invited user
    */
   async invite(populatedUser: PopulatedUserDocument, gameIdentifier: string, invitedUser: PopulatedUserDocument){
+    console.log(gameIdentifier);
     return this.get(populatedUser, gameIdentifier)
       .then((game) => {
         if(!game) throw new NotFoundException("cant find game");
