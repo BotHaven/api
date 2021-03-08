@@ -139,21 +139,4 @@ export class UserService {
     });
   }
 
-  /**
-   * Returns users level.
-   * @param {UserDocument} user user
-   * @returns {number} lvl
-   */
-  async getLevel(user: UserDocument): Promise<number>{
-    return user.getLevel()
-    .then()
-    .catch()
-  }
-
-  async getTitle(user: UserDocument): Promise<string> {
-    return user.getTitle()
-    .then()
-    .catch()
-  }
-
 }
