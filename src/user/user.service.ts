@@ -150,4 +150,10 @@ export class UserService {
     .catch()
   }
 
+  async getTitle(user: UserDocument): Promise<string> {
+    return user.getTitle()
+    .then()
+    .catch()
+  }
+
 }

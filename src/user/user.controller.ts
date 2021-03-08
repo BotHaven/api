@@ -76,6 +76,12 @@ export class UserController {
       .then(this.userService.getLevel)
       .catch();
   }
+  @Get("/:userIdentifier/title")
+  getTitle(@Agent() agent:string, @Param('userIdentifier') userIdentifier: string) {
+    return this.userService.get(agent, userIdentifier)
+      .then(this.userService.getTitle)
+      .catch();
+  }
 
   /**
    * Sets user's bio.

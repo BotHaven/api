@@ -1,14 +1,18 @@
-export interface Titles {
-    10: "a";
-    20: "b";
-    30: "c";
-    40: "d";
-    50: "e";
-    60: "f";
-    70: "g";
-    80: "h";
-    90: "i";
-    100: "j";
-    150: "k";
-    200: "l";
-}
+export const ITitles = Object.freeze({
+   "Warrior":10,
+   "Champion":20,
+   "Fighter":30,
+   "Hero":40,
+   "Soldier":50,
+   "Combatant":60,
+   "Conscript":70,
+   "Trooper":80,
+   "Enlisted":90,
+    "Advocate":100,
+    "Guard":150,
+    "Guardian":200,
+    "Paladin": 250,
+    "Partisan": 300,
+    "Protector": 350,
+    "Assailant": 400,
+})
