@@ -41,21 +41,18 @@ UserSchema.statics.findMyGames = async function (
 ) {
   return this.findOne({ username }).populate('games').exec();
 };
-UserSchema.methods.getLevel = async function () {
-  //@ts-ignore
+
+UserSchema.method("getLevel",async function (this: UserDocument){
   if (!this.games.length) return 0;
   return this.populate('games')
     .execPopulate()
     .then((populatedUser) => {
-      //@ts-ignore
       return Math.floor(
-            //@ts-ignore
         populatedUser.games
           .map((game) => {
-            //@ts-ignore
             return game.scores.get(this.username);
           })
           .reduce((prev, acc) => (acc += prev), 0) * Math.PI,
       );
     });
-};
+})
