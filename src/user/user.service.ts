@@ -140,19 +140,6 @@ export class UserService {
   }
 
   /**
-   * Deprecated
-   * @param user 
-   * @param experience 
-   * @returns 
-   */
-  async addExperience(user: UserDocument | PopulatedUserDocument, experience: number): Promise<UserDocument> {
-    if(!user.experience) user.experience = 0;
-    user.experience += experience;
-    user.markModified("experience");
-    return user.save();
-  }
-
-  /**
    * Returns users level.
    * @param {UserDocument} user user
    * @returns {number} lvl
