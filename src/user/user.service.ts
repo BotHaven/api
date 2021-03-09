@@ -49,7 +49,7 @@ export class UserService {
       });
   }
 
-  async get(agent: string, userIdentifier: string){
+  async get(agent: string, userIdentifier: string): Promise<UserDocument>{
     switch (agent) {
       case "discord / node-fetch":
         return this.getByOauthId(userIdentifier);
@@ -64,9 +64,19 @@ export class UserService {
    * @param oauth_id oauth_id
    * @returns {UserDocument} user
    */
-  async getByOauthId(oauth_id: string) {
+  async getByOauthId(oauth_id: string): Promise<UserDocument> {
     console.log("oauth")
-    return this.userModel.findOne({ oauth_id: oauth_id });
+    return new Promise((resolve, reject) => {
+      return this.userModel.findOne(
+        { oauth_id },
+        null,
+        null,
+        (err, doc) => {
+          if (doc) return resolve(doc);
+          reject(new NotFoundException('couldnt find user'));
+        },
+      );
+    });;
   }
 
   /**
